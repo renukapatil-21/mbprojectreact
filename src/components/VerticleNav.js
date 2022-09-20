@@ -9,25 +9,25 @@ const VerticleNav = () => {
     <>
 
 
-      <nav class="nav flex-column text-center ">
+      <nav className="nav flex-column text-center ">
         <a type="button" className="btn btn-primary btn-lg" href="/Patient"> Patient </a> 
-        <hr class="border-dark"></hr>
+        <hr className="border-dark"></hr>
         <a className="btn btn-primary btn-lg" href="/Doctor"> Doctor </a> 
-        <hr class="border-dark"></hr>
+        <hr className="border-dark"></hr>
         <a className="btn btn-primary btn-lg" href="/OPD"> OPD </a> 
-        <hr class="border-dark"></hr>
+        <hr className="border-dark"></hr>
         <a className="btn btn-primary btn-lg" href="/IPD"> IPD </a>
-        <hr class="border-dark"></hr> 
+        <hr className="border-dark"></hr> 
 
         <a className="btn btn-primary btn-lg" href="/Room"> Room </a> 
-        <hr class="border-dark"></hr>
+        <hr className="border-dark"></hr>
         <a className="btn btn-primary btn-lg" href="/Ward"> Ward </a>
-        <hr class="border-dark"></hr> 
+        <hr className="border-dark"></hr> 
 
         <a className="btn btn-primary btn-lg" href="/Nurse"> Nurse </a> 
-        <hr class="border-dark"></hr>
+        <hr className="border-dark"></hr>
         <a className="btn btn-primary btn-lg" href="/Wardboy"> Wardboy </a>
-        <hr class="border-dark"></hr> 
+        <hr className="border-dark"></hr> 
 
       </nav> 
 
