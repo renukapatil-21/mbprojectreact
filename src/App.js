@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Navbar from "./components/Navbar";
+import { Switch, Route } from "react-router-dom";
+import Home from "./components/Home";
+import PatientComponent from "./components/patient/patientcomponent";
+import DoctorComponent from "./components/doctor/doctorcomponent";
+import OPD from "./components/OPD";
+import IPD from "./components/IPD";
+import Room from "./components/Room";
+import Ward from "./components/Ward";
+import Nurse from "./components/Nurse";
+import Wardboy from "./components/Wardboy";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+
+      <Route path="/Patient">
+        <PatientComponent />
+      </Route>
+
+      <Route path="/Doctor">
+        <DoctorComponent />
+      </Route>
+
+      <Route path="/OPD">
+        <OPD />
+      </Route>
+
+      <Route path="/IPD">
+        <IPD />
+      </Route>
+
+      <Route path="/Room">
+        <Room />
+      </Route>
+
+      <Route path="/Ward">
+        <Ward />
+      </Route>
+
+      <Route path="/Nurse">
+        <Nurse />
+      </Route>
+
+      <Route path="/Wardboy">
+        <Wardboy />
+      </Route>
+
+    </Switch>
   );
-}
+};
 
 export default App;
