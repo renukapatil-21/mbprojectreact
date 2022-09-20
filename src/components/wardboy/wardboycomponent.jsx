@@ -1,13 +1,12 @@
 import React from "react";
-import PatientHttpService from "./patienthttpservice";
+import WardboyHttpService from "./wardboyhttpservice";
 import { useState, useEffect } from "react";
 
-const PatientComponent = (props) => {
-  const [patient, setPatient] = useState({ patientID: 0, firstName: '', middleName: '', lastName: '', mobile: '', email: '', dob:'', gender: '' });
-  const [patients, setPatients] = useState([]);
+const WardboyComponent = (props) => {
+  const [wardboy, setwardboy] = useState({ wardboyID: 0, wardID:0, firstName: '', middleName: '', lastName: '', mobile: '', email: '', gender: '' });
+  const [wardboys, setwardboys] = useState([]);
   const [selectedID, setSelectedID] = useState(0);
-
-  const serv = new PatientHttpService();
+  const serv = new WardboyHttpService();
 
   const styleobjbtn = {
     fontSize: 18
@@ -21,15 +20,15 @@ const PatientComponent = (props) => {
   const loadData = () => {
     serv.getData()
       .then((response) => {
-        setPatients(response.data.records);
+        setwardboy(response.data.records);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const postData = (patient) => {
-    serv.postData(patient)
+  const postData = (wardboy) => {
+    serv.postData(wardboy)
       .then((response) => {
         loadData();
       })
@@ -38,8 +37,8 @@ const PatientComponent = (props) => {
       });
   };
 
-  const putData = (patient) => {
-    serv.putData(patient.patientID, patient)
+  const putData = (wardboy) => {
+    serv.putData(wardboy.wardboyID, wardboy)
       .then((response) => {
         loadData();
       })
@@ -60,77 +59,79 @@ const PatientComponent = (props) => {
   };
 
   const onEntitySelect = (entity) => {
-    setSelectedID(entity.patientID);
-    setPatient(entity);
+    setSelectedID(entity.wardboyID);
+    setwardboy(entity);
   };
 
-  const deleteEntity = (patient) => {
-    deleteData(patient.patientID);
+  const deleteEntity = (wardboy) => {
+    deleteData(wardboy.wardboyID);
   };
 
   const clear = () => {
-    setPatient({ patientID: 0, firstName: '', middleName: '', lastName: '', mobile: '', email: '', dob:'', gender: '' });
+    setwardboy({ wardboyID: 0, ward:0, firstName: '', middleName: '', lastName: '', mobile: '', email: '', gender: '' });
     setSelectedID(0);
   };
   const save = () => {
-    if (selectedID && selectedID == patient.patientID) {
-      putData(patient);
+    console.log(selectedID, wardboy.wardboyID);
+    if (selectedID && selectedID == wardboy.wardboyID) {
+      putData(wardboy);
     }
     else {
-      postData(patient);
+      postData(wardboy);
     }
     clear();
   };
 
   return (
     <div className="container">
-      <h1>Patient Form</h1>
+      <h1>Wardboy Form</h1>
       <div className="form-group">
-        <label>Patient ID</label>
+        <label>wardboy ID</label>
         <input type="number" className="form-control"
-          value={patient.patientID}
-          onChange={(evt) => setPatient({ ...patient, patientID: parseInt(evt.target.value) })} />
+          value={wardboy.wardboyID}
+          onChange={(evt) => setwardboy({ ...wardboy, wardboyID: parseInt(evt.target.value) })} />
       </div>
       <div className="form-group">
-        <label>Patient Name</label>
+        <label>ward ID</label>
+        <input type="number" className="form-control"
+          value={wardboy.wardID}
+          onChange={(evt) => setwardboy({ ...wardboy, wardID: parseInt(evt.target.value) })} />
+      </div>
+      <div className="form-group">
+        <label>Wardboy Name</label>
         <input type="text" className="form-control"
-          value={patient.firstName}
-          onChange={(evt) => setPatient({ ...patient, firstName: evt.target.value })} />
+          value={wardboy.firstName}
+          onChange={(evt) => setwardboy({ ...wardboy, firstName: evt.target.value })} />
         <input type="text" className="form-control"
-          value={patient.middleName}
-          onChange={(evt) => setPatient({ ...patient, middleName: evt.target.value })} />
+          value={wardboy.middleName}
+          onChange={(evt) => setwardboy({ ...wardboy, middleName: evt.target.value })} />
         <input type="text" className="form-control"
-          value={patient.lastName}
-          onChange={(evt) => setPatient({ ...patient, lastName: evt.target.value })} />
+          value={wardboy.lastName}
+          onChange={(evt) => setwardboy({ ...wardboy, lastName: evt.target.value })} />
       </div>
       <div className="form-group">
         <label>Mobile</label>
         <input type="string" className="form-control"
-          value={patient.mobile}
-          onChange={(evt) => setPatient({ ...patient, mobile: evt.target.value })} />
+          value={wardboy.mobile}
+          onChange={(evt) => setwardboy({ ...wardboy, mobile: evt.target.value })} />
       </div>
       <div className="form-group">
         <label>email</label>
         <input type="string" className="form-control"
-          value={patient.email}
-          onChange={(evt) => setPatient({ ...patient, email: evt.target.value })} />
+          value={wardboy.email}
+          onChange={(evt) => setwardboy({ ...wardboy, email: evt.target.value })} />
       </div>
-      <div className="form-group">
-        <label>DOB</label>
-        <input type="string" className="form-control"
-          value={patient.patientType}
-          onChange={(evt) => setPatient({ ...patient, dob: evt.target.value })} />
-      </div>
+    
       <div className="form-group">
         <label>Gender</label>
         <input type="string" className="form-control"
-          value={patient.gender}
-          onChange={(evt) => setPatient({ ...patient, gender: evt.target.value })} />
+          value={wardboy.gender}
+          onChange={(evt) => setwardboy({ ...wardboy, gender: evt.target.value })} />
       </div>
-      <div className="form-group ">
-        <button className="btn btn-warning m-1 btn-lg font-weight-bolder"
+      <div className="form-group">
+        <button className="btn btn-warning m-1"
           onClick={clear} style={styleobjbtn}>Clear</button>
-        <button className="btn btn-success btn-lg "
+        <button className="btn btn-success"
           onClick={save} style={styleobjbtn}>Save</button>
       </div>
 
@@ -140,7 +141,7 @@ const PatientComponent = (props) => {
         <thead>
           <tr>
             {
-              Object.keys(patient).map((header, index) => (
+              Object.keys(wardboy).map((header, index) => (
                 <th key={index}>{header}</th>
               ))
             }
@@ -149,17 +150,13 @@ const PatientComponent = (props) => {
         </thead>
         <tbody>
           {
-            patients.map((entity, index) => (
+            wardboys.map((entity, index) => (
               <tr key={index}>
                 {Object.keys(entity).map((header, index) => (
                   <td key={index}>{entity[header]}</td>
                 ))}
-                {/* <td onClick={() => onEntitySelect(entity)}>Select</td>
-                <td onClick={() => deleteEntity(entity)}>Delete</td> */}
-
                 <td onClick={() => onEntitySelect(entity)}>  <button className="btn btn-outline-primary btn-lg"> Select </button>  </td>
                 <td onClick={() => deleteEntity(entity)}><button className="btn btn-outline-danger btn-lg"> Delete </button></td>
-              
               </tr>
             ))
           }
@@ -171,4 +168,4 @@ const PatientComponent = (props) => {
 
 }
 
-export default PatientComponent;
+export default WardboyComponent;

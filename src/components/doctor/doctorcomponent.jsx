@@ -8,6 +8,11 @@ const DoctorComponent = (props) => {
   const [selectedID, setSelectedID] = useState(0);
   const serv = new DoctorHttpService();
 
+  const styleobjbtn = {
+    fontSize: 18
+    
+  }
+
   useEffect(() => {
     loadData();
   }, []);
@@ -79,7 +84,7 @@ const DoctorComponent = (props) => {
 
   return (
     <div className="container">
-      <h3>Doctor Form</h3>
+      <h1>Doctor Form</h1>
       <div className="form-group">
         <label>Doctor ID</label>
         <input type="number" className="form-control"
@@ -130,9 +135,9 @@ const DoctorComponent = (props) => {
       </div>
       <div className="form-group">
         <button className="btn btn-warning m-1"
-          onClick={clear}>Clear</button>
+          onClick={clear} style={styleobjbtn}>Clear</button>
         <button className="btn btn-success"
-          onClick={save}>Save</button>
+          onClick={save} style={styleobjbtn}>Save</button>
       </div>
 
       <hr />
@@ -155,8 +160,8 @@ const DoctorComponent = (props) => {
                 {Object.keys(entity).map((header, index) => (
                   <td key={index}>{entity[header]}</td>
                 ))}
-                <td onClick={() => onEntitySelect(entity)}>Select</td>
-                <td onClick={() => deleteEntity(entity)}>Delete</td>
+                <td onClick={() => onEntitySelect(entity)}>  <button className="btn btn-outline-primary btn-lg"> Select </button>  </td>
+                <td onClick={() => deleteEntity(entity)}><button className="btn btn-outline-danger btn-lg"> Delete </button></td>
               </tr>
             ))
           }

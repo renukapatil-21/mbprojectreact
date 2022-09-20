@@ -9,6 +9,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import Navbar from "./components/Navbar";
 import VerticleNav from "./components/VerticleNav";
 
+const styleobj = {
+  fontSize: 18
+  
+}
+
 // ReactDOM.render(
 //   <BrowserRouter>
 //     <React.StrictMode>
@@ -57,7 +62,7 @@ root.render(
              <VerticleNav />
           </div>
          
-          <div className="col-sm-10">
+          <div className="col-sm-9" style={styleobj}>
               <App />
           </div>
       </div>

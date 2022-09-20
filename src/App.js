@@ -4,12 +4,13 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import PatientComponent from "./components/patient/patientcomponent";
 import DoctorComponent from "./components/doctor/doctorcomponent";
+import WardboyComponent from "./components/wardboy/wardboycomponent";
 import OPD from "./components/OPD";
 import IPD from "./components/IPD";
-import Room from "./components/Room";
-import Ward from "./components/Ward";
-import Nurse from "./components/Nurse";
-import Wardboy from "./components/Wardboy";
+import RoomComponent from "./components/room/roomcomponent";
+import WardComponent from "./components/ward/wardcomponent";
+import NurseComponent from "./components/nurse/nursecomponent";
+
 
 const App = () => {
   return (
@@ -35,19 +36,19 @@ const App = () => {
       </Route>
 
       <Route path="/Room">
-        <Room />
+        <RoomComponent />
       </Route>
 
       <Route path="/Ward">
-        <Ward />
+        <WardComponent />
       </Route>
 
       <Route path="/Nurse">
-        <Nurse />
+        <NurseComponent />
       </Route>
 
       <Route path="/Wardboy">
-        <Wardboy />
+        <WardboyComponent />
       </Route>
 
     </Switch>

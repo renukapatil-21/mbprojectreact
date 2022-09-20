@@ -11,18 +11,20 @@ const Navbar = () => {
 
         <div className="logo">
           <h2>
+          <NavLink to="/" >
             <span>M</span>indbody
             <span>H</span>ospital
+            </NavLink>
           </h2>
         </div>
 
-        <div className={showMediaIcons ? "menu-link mobile-menu-link" : "menu-link" }>
+        {/* <div className={showMediaIcons ? "menu-link mobile-menu-link" : "menu-link" }>
           <ul>
             <li >
               <NavLink to="/" >Home</NavLink>
             </li>
           </ul>
-        </div>
+        </div> */}
 
       </nav>
     </>
